@@ -1,12 +1,15 @@
 package org.thread;
 
-
-import static sun.management.snmp.jvminstr.JvmThreadInstanceEntryImpl.ThreadStateMap.Byte0.runnable;
-
-public class DowloadFileTask implements runnable{
+public class DownloadFileTask implements Runnable{
     @Override
     public void run(){
-        System.out.println("Downloading a File");
+        System.out.println("Downloading a File: " + Thread.currentThread().getName());
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("Download Complete.."+Thread.currentThread().getName());
     }
 
 }
